@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class LibraryEventApplication {
 
 	public static void main(String[] args) {
+		System.out.println("First-rest-project");
 		SpringApplication.run(LibraryEventApplication.class, args);
 	}
 
