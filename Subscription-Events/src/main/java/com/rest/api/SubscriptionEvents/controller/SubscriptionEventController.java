@@ -44,7 +44,7 @@ public class SubscriptionEventController {
 
 		if (book.getBookId() != null && book.getAvailableCopies() > 0) {
 			service.saveSubscriber(subscription);
-			return ResponseEntity.status(HttpStatus.CREATED).body("Successful creation of subscription record");
+			return ResponseEntity.status(HttpStatus.CREATED).body("Successful creation of a subscription record");
 		}
 		return ResponseEntity.status(HttpStatus.UNPROCESSABLE_ENTITY)
 				.body("No book found with bookId : " + subscription.getBookId());
