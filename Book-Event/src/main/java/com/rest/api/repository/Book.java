@@ -24,7 +24,18 @@ public class Book {
 	@Column(name = "total_copies")
     private Integer totalCopies;
     
-    public Integer getBookId() {
+    public Book() {
+		super();
+	}
+	public Book(Integer bookId, String bookName, String author, Integer availableCopies, Integer totalCopies) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.author = author;
+		this.availableCopies = availableCopies;
+		this.totalCopies = totalCopies;
+	}
+	public Integer getBookId() {
 		return bookId;
 	}
 	public void setBookId(Integer bookId) {

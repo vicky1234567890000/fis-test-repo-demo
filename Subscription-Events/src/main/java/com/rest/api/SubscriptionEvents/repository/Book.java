@@ -13,6 +13,17 @@ public class Book {
     private Integer availableCopies;
     private Integer totalCopies;
     
+	public Book() {
+		super();
+	}
+	public Book(Integer bookId, String bookName, String author, Integer availableCopies, Integer totalCopies) {
+		super();
+		this.bookId = bookId;
+		this.bookName = bookName;
+		this.author = author;
+		this.availableCopies = availableCopies;
+		this.totalCopies = totalCopies;
+	}
 	public Integer getBookId() {
 		return bookId;
 	}

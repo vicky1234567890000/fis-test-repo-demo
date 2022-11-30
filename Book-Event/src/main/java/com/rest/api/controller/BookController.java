@@ -14,26 +14,28 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.rest.api.repository.Book;
 import com.rest.api.repository.BookRepo;
+import com.rest.api.service.BookService;
 
 @RestController
 public class BookController {
 	
 	@Autowired
-	private BookRepo bookRepo;
+	private BookService bookService;
 	
 	@GetMapping("/book")
 	public ResponseEntity<List<Book>> bookList() {
-		return ResponseEntity.ok().body(bookRepo.findAll());
+		return ResponseEntity.ok().body(bookService.bookList());
 	}
 	@GetMapping("/book/{id}")
-	public ResponseEntity<Optional<Book>> loadBook(@PathVariable(value="id") Integer id) {
+	public ResponseEntity<Book> loadBook(@PathVariable(value="id") Integer id) {
 		
-		return ResponseEntity.ok().body(bookRepo.findById(id));
+		if(bookService.loadBook(id).getBookId()==null)
+			return ResponseEntity.ok().body(new Book(null,"","",0,0));
+		return ResponseEntity.ok().body(bookService.loadBook(id));
 	}
 	@PostMapping("/book")
 	public ResponseEntity<HttpStatus> saveBook(@RequestBody Book book) {
-		bookRepo.save(book);
-		System.out.println(book + " saved successfully in DB.");
+		bookService.saveBook(book);
 		return ResponseEntity.status(HttpStatus.CREATED).body(null);
 	}
 
