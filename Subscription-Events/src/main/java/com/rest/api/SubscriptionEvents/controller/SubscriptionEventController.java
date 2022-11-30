@@ -31,9 +31,6 @@ public class SubscriptionEventController {
 	@Autowired
 	SubscriptionEventService service;
 
-	@Autowired
-	WebClient webClient;
-
 	@GetMapping("/subscriptions")
 	public ResponseEntity<List<Subscription>> getAllSubscriptions() {
 		List<Subscription> allSubscribers = service.getAllSubscribers();
